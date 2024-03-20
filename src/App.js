@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { data } from './data.js';
 
 function App() {
-  const [contacts, setContacts] = useState(data);
+  const [Food, setFood] = useState(data);
   const [search, setSearch] = useState('');
 
   // const sortName = () => {
@@ -39,25 +39,25 @@ function App() {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Phone</th>
+              <th>Name</th>
+              <th>Ingredients</th>
+              <th>Origin_Location</th>
+              <th>Tags</th>
             </tr>
           </thead>
           <tbody>
-            {data
+            {Food
               .filter((item) => {
                 return search.toLowerCase() === ''
                   ? item
-                  : item.first_name.toLowerCase().includes(search);
+                  : item.toLowerCase().includes(search)
               })
               .map((item, index) => (
                 <tr key={index}>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.email}</td>
-                  <td>{item.phone}</td>
+                  <td>{item.food_item}</td>
+                  <td>{item.ingredients}</td>
+                  <td>{item.origin_location}</td>
+                  <td>{item.tags}</td>
                 </tr>
               ))}
           </tbody>
